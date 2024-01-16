@@ -7,7 +7,15 @@
 */
 
 function isPalindrome(str) {
-  return true;
+  str = str.toLowerCase();
+  cleanstr = '';
+  for (var i = 0; i < str.length; i++) {
+    val = str[i].charCodeAt('0')
+    if ((val >= 48 && val <= 57) || (val >= 97 && val <= 122)) {
+      cleanstr += str[i];
+    }
+  }
+  return cleanstr == cleanstr.split('').reverse().join('');
 }
 
 module.exports = isPalindrome;
