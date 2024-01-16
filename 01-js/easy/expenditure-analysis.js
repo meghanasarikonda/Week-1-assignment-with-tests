@@ -9,7 +9,26 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  var categorymap = {}
+  for (var i = 0; i < transactions.length; i++) {
+    var transaction = transactions[i]['category']
+    if (transaction in categorymap) {
+      categorymap[transaction] += transactions[i]['price']
+    } else {
+      categorymap[transaction] = transactions[i]['price']
+    }
+  }
+
+  var answer = []
+  keys = Object.keys(categorymap)
+  for (var i = 0; i < keys.length; i++) {
+    var obj = {
+      category: keys[i],
+      totalSpent: categorymap[keys[i]]
+    }
+    answer.push(obj)
+  }
+  return answer;
 }
 
 module.exports = calculateTotalSpentByCategory;
